@@ -6,18 +6,20 @@ class CommonButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
   final bool? isLoading;
+  final double? width;
 
   const CommonButton({
     super.key,
     required this.title,
     required this.onTap,
-    this.isLoading=false
+    this.isLoading=false,
+    this.width
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width:width?? double.infinity,
       height: 52,
       child: ElevatedButton(
         onPressed: onTap,

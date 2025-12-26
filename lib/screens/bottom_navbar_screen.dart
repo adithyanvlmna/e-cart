@@ -1,7 +1,6 @@
 import 'package:e_mart/core/app_theme/app_colors.dart';
 import 'package:e_mart/screens/home_screen.dart';
-import 'package:e_mart/screens/product_details_screen.dart';
-import 'package:e_mart/screens/product_list_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class BottomNavbarScreen extends StatefulWidget {
@@ -13,14 +12,14 @@ class BottomNavbarScreen extends StatefulWidget {
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   int indexNumber = 0;
-  final List screens=[HomeScreen(),ProductDetailScreen(),ProductListScreen(),Text("No Data"),];
+  final List screens=[HomeScreen(),Center(child: Text("")),Center(child: Text("")),Center(child: Text("")),];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body:screens.elementAt(indexNumber),
      bottomNavigationBar: SizedBox(
-  height: 95, // enough for icon + text
+  height: 95, 
   child: BottomAppBar(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

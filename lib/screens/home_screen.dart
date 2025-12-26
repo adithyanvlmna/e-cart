@@ -133,7 +133,8 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         itemBuilder: (_, index) => SizedBox(
           width: 160,
-          child: const ProductCard(
+          child:  ProductCard(
+            onTap: (){},
             name: "Masoor Dal 1KG",
             price: "₹125.00",
             oldPrice: "₹145.00",

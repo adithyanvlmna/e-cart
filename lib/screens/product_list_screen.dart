@@ -34,7 +34,8 @@ class ProductListScreen extends StatelessWidget {
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
-                return const ProductCard(
+                return  ProductCard(
+                  onTap: (){},
                   name: "Masoor Dal 1KG",
                   price: "₹125.00",
                   oldPrice: "₹145.00",

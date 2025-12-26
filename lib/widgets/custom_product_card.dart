@@ -7,6 +7,7 @@ class ProductCard extends StatelessWidget {
   final String price;
   final String oldPrice;
   final String image;
+  final void Function()? onTap;
 
   const ProductCard({
     super.key,
@@ -14,6 +15,7 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.oldPrice,
     required this.image,
+    required this.onTap
   });
 
   @override
@@ -39,13 +41,13 @@ class ProductCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          Text(name, style: const TextStyle(fontSize: 13)),
+          Text(name, style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold)),
           const SizedBox(height: 4),
           Row(
             children: [
               Text(price,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 13)),
+                      fontWeight: FontWeight.bold, fontSize: 13,color: AppColors.primaryBrown)),
               const SizedBox(width: 6),
               Text(oldPrice,
                   style: const TextStyle(
@@ -55,26 +57,34 @@ class ProductCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          _addButton(),
+          _addButton(onTap: onTap),
         ],
       ),
     );
   }
 
-  Widget _addButton() {
-    return Container(
-      height: 32,
-      decoration: BoxDecoration(
-        border: Border.all(color:  AppColors.primaryBrown,),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const Center(
-        child: Text(
-          "Add",
-          style: TextStyle(
-            color: AppColors.primaryBrown,
-            fontWeight: FontWeight.w600,
-          ),
+  Widget _addButton({required void Function()? onTap}) {
+    return GestureDetector(
+      onTap:onTap ,
+      child: Container(
+        height: 32,
+        decoration: BoxDecoration(
+          border: Border.all(color:  AppColors.primaryBrown,),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          spacing: 10,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Add",
+              style: TextStyle(
+                color: AppColors.primaryBrown,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Icon(Icons.shopping_cart_outlined,size: 15,color: AppColors.primaryBrown,)
+          ],
         ),
       ),
     );

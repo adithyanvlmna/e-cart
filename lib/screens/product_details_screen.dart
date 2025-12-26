@@ -1,4 +1,5 @@
 import 'package:e_mart/core/app_theme/app_colors.dart';
+import 'package:e_mart/widgets/common_button.dart';
 import 'package:e_mart/widgets/custom_product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,8 @@ class ProductDetailScreen extends StatelessWidget {
                   Center(
                     child: Image.asset(
                       "assets/images/product.png",
-                      height: 220,
+                      height: 360,
+                      width: 360,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -48,7 +50,7 @@ class ProductDetailScreen extends StatelessWidget {
                     children: const [
                       Text("₹125.00",
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
+                              fontSize: 16, fontWeight: FontWeight.bold,color: AppColors.primaryBrown)),
                       SizedBox(width: 8),
                       Text("₹145.00",
                           style: TextStyle(
@@ -56,7 +58,7 @@ class ProductDetailScreen extends StatelessWidget {
                               color: Colors.grey)),
                       SizedBox(width: 6),
                       Text("(14% OFF)",
-                          style: TextStyle(color: Colors.green)),
+                          style: TextStyle(color: AppColors.primaryBrown)),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -67,7 +69,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    "High-quality unpolished masoor dal sourced directly from farms. Rich in protein and perfect for daily meals.",
+                    "Bag of Green offers premium Strawberries from South Africa, prized for their vibrant red color, natural sweetness, and juicy texture. Perfect for snacking, desserts, and smoothies, these strawberries are carefully sourced and delivered fresh anywhere in the UAE. Enjoy the delicious taste and quality of South African strawberries at your convenience.",
                     style: TextStyle(color: AppColors.greyText),
                   ),
                   const SizedBox(height: 20),
@@ -81,12 +83,13 @@ class ProductDetailScreen extends StatelessWidget {
                     height: 240,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, i) => const SizedBox(
+                      itemBuilder: (_, i) =>  SizedBox(
                         width: 160,
                         child: ProductCard(
+                          onTap: (){},
                           name: "Chana Dal 1KG",
                           price: "₹105.00",
-                          oldPrice: "₹120.00",
+                          oldPrice: "₹80.00",
                           image: "assets/images/product.png",
                         ),
                       ),
@@ -101,24 +104,7 @@ class ProductDetailScreen extends StatelessWidget {
           ),
 
           /// Bottom Add To Cart
-          Container(
-            padding: const EdgeInsets.all(12),
-            color: Colors.white,
-            child: SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryBrown,
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Add To Cart",
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
-          )
+          CommonButton(title: "Add To Cart", onTap: (){},width: 360,)
         ],
       ),
     );
