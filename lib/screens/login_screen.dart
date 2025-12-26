@@ -1,5 +1,6 @@
 import 'package:e_mart/core/utils/validator.dart';
 import 'package:e_mart/provider/login_provider.dart';
+import 'package:e_mart/screens/bottom_navbar_screen.dart';
 import 'package:e_mart/widgets/common_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         CommonTextField(
                           validator: (p0) =>
-                              feildValidation(p0, submitted: value.submitted),
+                              feildValidation(p0, submitted: value.submitted,msg: "Please enter email or phone number"),
                           hintText: "Johndoe@gmail.com",
                           controller: value.emailCtrl,
                         ),
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         CommonTextField(
                           validator: (p0) =>
-                              feildValidation(p0, submitted: value.submitted),
+                              feildValidation(p0, submitted: value.submitted,msg: "Password is required"),
                     
                           hintText: "********",
                           controller: value.passwordCtrl,
@@ -71,12 +72,16 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {
                             value.submitted = true;
                             if (value.formKey.currentState!.validate()) {
-                              value.login(
-                                context: context,
-                                email: value.emailCtrl.text.trim(),
-                                password: value.passwordCtrl.text.trim()
+                           Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) =>  BottomNavbarScreen()),
+);
+                              // value.login(
+                              //   context: context,
+                              //   email: value.emailCtrl.text.trim(),
+                              //   password: value.passwordCtrl.text.trim()
                               
-                              );
+                              // );
                             }
                           },
                         ),

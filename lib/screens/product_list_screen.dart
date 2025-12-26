@@ -1,4 +1,5 @@
 import 'package:e_mart/core/app_theme/app_colors.dart';
+import 'package:e_mart/core/utils/routes.dart';
 import 'package:e_mart/widgets/custom_product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class ProductListScreen extends StatelessWidget {
       backgroundColor: AppColors.lightBg,
       appBar: AppBar(
         title: const Text("Unpolished Pulses"),
-        centerTitle: true,
+   
         actions: const [
           Icon(Icons.search),
           SizedBox(width: 12),
@@ -35,7 +36,9 @@ class ProductListScreen extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 return  ProductCard(
-                  onTap: (){},
+                  onTap: (){
+                    Navigator.pushNamed(context, Routes.prodDscreen);
+                  },
                   name: "Masoor Dal 1KG",
                   price: "₹125.00",
                   oldPrice: "₹145.00",

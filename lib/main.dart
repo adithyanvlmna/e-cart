@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'E cart',
-        initialRoute: Routes.bottomNav,
+        initialRoute: Routes.splash,
         routes: Routes.routes,
       ),
     );

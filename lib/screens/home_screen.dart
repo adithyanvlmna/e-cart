@@ -1,7 +1,7 @@
 import 'package:e_mart/core/app_theme/app_colors.dart';
+import 'package:e_mart/core/utils/routes.dart';
 import 'package:e_mart/widgets/custom_product_card.dart';
 import 'package:flutter/material.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,46 +9,40 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryBrown,
+        leading: Image.asset("assets/images/leading.png"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.search, color: Colors.white),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.favorite_outline, color: Colors.white),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.notification_important, color: Colors.white),
+          ),
+        ],
+      ),
       backgroundColor: AppColors.lightBg,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Banner
-            Container(
-              margin: const EdgeInsets.all(16),
-              height: 140,
-              decoration: BoxDecoration(
-                color: Colors.orange.shade300,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        "Go Natural with Unpolished Grains\nGet 10% Off",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Image.asset("assets/images/banner.png", height: 100),
-                ],
-              ),
+            SizedBox(height: 18),
+
+            Center(
+              child: Image.asset("assets/images/homeimg.png", height: 180),
             ),
 
-           
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 "Categories",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ),
             const SizedBox(height: 8),
@@ -59,8 +53,10 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 children: List.generate(
                   5,
-                  (index) => _categoryItem("assets/images/product.png",
-                      "Unpolished Rice"),
+                  (index) => _categoryItem(
+                    "assets/images/circleimg.png",
+                    "Rice",
+                  ),
                 ),
               ),
             ),
@@ -68,23 +64,23 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 12),
             _productSection("Featured Products"),
             const SizedBox(height: 12),
-            _horizontalProductList(),
+            _horizontalProductList(context: context),
             const SizedBox(height: 12),
             _productSection("Daily Best Selling"),
             const SizedBox(height: 12),
-            _horizontalProductList(),
+            _horizontalProductList(context: context),
             const SizedBox(height: 12),
             _productSection("Recently Added"),
             const SizedBox(height: 12),
-            _horizontalProductList(),
+            _horizontalProductList(context: context),
             const SizedBox(height: 12),
             _productSection("Popular Products"),
             const SizedBox(height: 12),
-            _horizontalProductList(),
+            _horizontalProductList(context: context),
             const SizedBox(height: 12),
             _productSection("Trending Products"),
             const SizedBox(height: 12),
-            _horizontalProductList(),
+            _horizontalProductList(context: context),
             const SizedBox(height: 20),
           ],
         ),
@@ -99,11 +95,11 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 28,
+            radius: 35,
             backgroundColor: Colors.white,
             child: Image.asset(image, height: 40),
           ),
-          const SizedBox(height: 6),
+         
           Text(
             title,
             style: const TextStyle(fontSize: 12),
@@ -119,13 +115,12 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         title,
-        style: const TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 16),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }
 
-  Widget _horizontalProductList() {
+  Widget _horizontalProductList({required BuildContext context}) {
     return SizedBox(
       height: 220,
       child: ListView.separated(
@@ -133,8 +128,10 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         itemBuilder: (_, index) => SizedBox(
           width: 160,
-          child:  ProductCard(
-            onTap: (){},
+          child: ProductCard(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.productLscreen);
+            },
             name: "Masoor Dal 1KG",
             price: "₹125.00",
             oldPrice: "₹145.00",

@@ -10,6 +10,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton:  CommonButton(title: "Add To Cart", onTap: (){},width: 360,),
       backgroundColor: AppColors.lightBg,
       appBar: AppBar(
         actions: const [
@@ -47,7 +48,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Row(
-                    children: const [
+                    children:  [
                       Text("₹125.00",
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold,color: AppColors.primaryBrown)),
@@ -59,6 +60,8 @@ class ProductDetailScreen extends StatelessWidget {
                       SizedBox(width: 6),
                       Text("(14% OFF)",
                           style: TextStyle(color: AppColors.primaryBrown)),
+                          Spacer(),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.share,color: Colors.black,))
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -97,14 +100,15 @@ class ProductDetailScreen extends StatelessWidget {
                           const SizedBox(width: 12),
                       itemCount: 4,
                     ),
-                  )
+                  ),
+                  SizedBox(height: 40,)
                 ],
               ),
             ),
           ),
 
           /// Bottom Add To Cart
-          CommonButton(title: "Add To Cart", onTap: (){},width: 360,)
+         
         ],
       ),
     );
