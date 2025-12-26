@@ -10,7 +10,10 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:  CommonButton(title: "Add To Cart", onTap: (){},width: 360,),
+      floatingActionButton:  Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CommonButton(title: "Add To Cart", onTap: (){},width: 360,),
+      ),
       backgroundColor: AppColors.lightBg,
       appBar: AppBar(
         actions: const [
