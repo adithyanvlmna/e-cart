@@ -20,14 +20,14 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
     return Scaffold(
       body:screens.elementAt(indexNumber),
      bottomNavigationBar: SizedBox(
-  height: 60, // enough for icon + text
+  height: 95, // enough for icon + text
   child: BottomAppBar(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         navIcon(indexNum: 0, icon: Icons.home, text: 'Home'),
-        navIcon(indexNum: 1, icon: Icons.search, text: 'Search'),
-        navIcon(indexNum: 2, icon: Icons.notifications, text: 'Notify'),
+        navIcon(indexNum: 1, icon: Icons.category, text: 'Category'),
+        navIcon(indexNum: 2, icon: Icons.wallet, text: 'Cart'),
         navIcon(indexNum: 3, icon: Icons.person, text: 'Profile'),
       ],
     ),
@@ -50,7 +50,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
         });
       },
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             icon,
